@@ -1,18 +1,35 @@
-# API REST Síncrona Java - Notícias IBGE
+Seu README já está bom, mas no GitHub é interessante melhorar **hierarquia, badges, tabelas e organização visual**. Abaixo está uma versão **mais profissional e bem formatada** (padrão de projetos Java/Spring). Você pode **copiar e substituir direto no README.md**.
 
-Uma API simples desenvolvida em **Spring Boot** que consome as notícias recentes da API oficial do IBGE e retorna um JSON com ID e título das notícias.
+---
 
-Projeto criado como exemplo de integração síncrona com API externa usando `RestTemplate` + parsing de JSON.
+# 📰 API REST Síncrona Java — Notícias IBGE
 
-## Funcionalidades
+Uma **API REST desenvolvida em Java com Spring Boot** que consome as notícias recentes da API oficial do IBGE e retorna um JSON contendo **ID e título das notícias**.
 
-- Endpoint principal: `GET /noticias`
-- Retorna as **últimas 10 notícias** publicadas pelo IBGE
-- Campos retornados por notícia:
-  - `id` → identificador da notícia
-  - `titulo` → título completo da notícia
+Este projeto demonstra **integração síncrona com API externa** utilizando:
 
-Exemplo de resposta (JSON):
+* `RestTemplate`
+* Parsing de JSON
+* Estrutura simples de API REST
+
+---
+
+# 🚀 Funcionalidades
+
+* Endpoint principal: `GET /noticias`
+* Retorna as **10 notícias mais recentes do IBGE**
+* Estrutura simples para demonstração de integração com API externa
+
+### Campos retornados
+
+| Campo  | Descrição                |
+| ------ | ------------------------ |
+| id     | Identificador da notícia |
+| titulo | Título da notícia        |
+
+---
+
+# 📦 Exemplo de Resposta
 
 ```json
 [
@@ -24,64 +41,137 @@ Exemplo de resposta (JSON):
     "id": "46095",
     "titulo": "IBGE tem financiamento retomado para o SINAPI após novo decreto do Governo Federal"
   }
-  // ... até 10 itens
 ]
+```
 
-# Tecnologias Utilizadas
+---
 
-Java 19
-Spring Boot 3.2
-Maven
-RestTemplate (para chamadas HTTP síncronas)
-org.json (para parsing do JSON da API IBGE)
-Hospedado no Replit (Autoscale)
+# 🛠 Tecnologias Utilizadas
 
-# Como Executar Localmente (no Replit ou em ambiente local)
+* **Java 19**
+* **Spring Boot 3.2**
+* **Maven**
+* **RestTemplate** (chamadas HTTP síncronas)
+* **org.json** (parsing JSON)
+* **Swagger / OpenAPI**
+* **Replit Autoscale** (deploy)
 
-## 1. Clone o repositório:
+---
+
+# ▶️ Como Executar o Projeto
+
+## 1️⃣ Clonar o repositório
+
+```bash
 git clone https://github.com/alexjosesilva/api-rest-sincrono-java.git
 cd api-rest-sincrono-java
+```
 
-## 2. Instale as dependências:
+---
+
+## 2️⃣ Instalar dependências
+
+```bash
 mvn clean install
+```
 
-## 3. Rode a aplicação:
+---
+
+## 3️⃣ Executar a aplicação
+
+```bash
 mvn spring-boot:run
+```
 
-## 4.Acesse o endpoint:
-http://localhost:5000/noticias   (ou a porta configurada)
+---
 
-No Replit: basta clicar em Run → o preview abre automaticamente
+## 4️⃣ Acessar o endpoint
 
-# Deploy (Replit)
-O projeto já está hospedado e público:
+```
+http://localhost:5000/noticias
+```
 
-- URL da API:
+No **Replit**, basta clicar em **Run** e o preview abre automaticamente.
+
+---
+
+# 🌐 Deploy
+
+A API está hospedada publicamente no **Replit**.
+
+### API
+
+```
 https://api-rest-sincrono-java--alexjose.replit.app/noticias
-- Swagger UI (documentação interativa):
+```
+
+### Swagger (documentação interativa)
+
+```
 https://api-rest-sincrono-java--alexjose.replit.app/swagger-ui.html
+```
 
-# Endpoints Disponíveis
+---
 
-Método,Endpoint,Descrição,Status
-GET,/noticias,Retorna as últimas 10 notícias do IBGE,✅
-GET,/swagger-ui.html,Interface Swagger para testar a API,✅
-GET,/v3/api-docs,Especificação OpenAPI em JSON,✅
+# 📌 Endpoints
 
-# Fonte de Dados
-API oficial do IBGE: https://servicodados.ibge.gov.br/api/v3/noticias?qtd=10
+| Método | Endpoint           | Descrição                              | Status |
+| ------ | ------------------ | -------------------------------------- | ------ |
+| GET    | `/noticias`        | Retorna as 10 últimas notícias do IBGE | ✅      |
+| GET    | `/swagger-ui.html` | Interface Swagger para testes          | ✅      |
+| GET    | `/v3/api-docs`     | Especificação OpenAPI                  | ✅      |
 
-# Próximos Passos / Melhorias Possíveis
-- Adicionar mais campos (introdução, data_publicacao, link, imagens)
-- Suporte a parâmetros (qtd, página, tipo de notícia)
-- Cache de respostas (para evitar chamadas frequentes à API IBGE)
-- Tratamento de erros mais elegante com @ControllerAdvice
-- Testes unitários e de integração
-- Frontend simples (HTML + JS) consumindo a API
+---
 
-# Autor
-Alex José
-PE, Brasil
-GitHub: @alexjosesilva
-Replit: @alexjose
-Feito com ☕ e Spring Boot em 2026
+# 📊 Fonte de Dados
+
+API oficial do IBGE:
+
+```
+https://servicodados.ibge.gov.br/api/v3/noticias?qtd=10
+```
+
+---
+
+# 🔧 Melhorias Futuras
+
+* Adicionar mais campos da notícia:
+
+  * `introducao`
+  * `data_publicacao`
+  * `link`
+  * `imagens`
+* Suporte a parâmetros:
+
+  * `qtd`
+  * `pagina`
+  * `tipo`
+* Implementar **cache de respostas**
+* Tratamento de erros com `@ControllerAdvice`
+* **Testes unitários e integração**
+* Criar **frontend simples (HTML + JS)** consumindo a API
+
+---
+
+# 👨‍💻 Autor
+
+**Alex José**
+
+📍 Pernambuco — Brasil
+
+* GitHub: [https://github.com/alexjosesilva](https://github.com/alexjosesilva)
+* Replit: [https://replit.com/@alexjose](https://replit.com/@alexjose)
+
+---
+
+⭐ Projeto desenvolvido com **Java + Spring Boot** para demonstração de integração com **API pública do IBGE**.
+
+---
+
+✅ Se quiser, também posso te mostrar **3 melhorias que fazem seu GitHub parecer projeto de empresa (muito usado em entrevistas)**:
+
+* adicionar **badges (build, java, spring)**
+* adicionar **diagrama da arquitetura**
+* adicionar **GIF da API funcionando no Swagger**
+
+Isso **aumenta muito o impacto do repositório** quando recrutadores olham.
