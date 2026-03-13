@@ -1,7 +1,3 @@
-# Generate the formatted README.md file using pypandoc as required
-import pypandoc
-
-readme_text = """
 # 📰 API REST Síncrona Java — Notícias IBGE
 
 Uma **API REST desenvolvida em Java com Spring Boot** que consome as notícias recentes da API oficial do IBGE e retorna um JSON contendo **ID e título das notícias**.
@@ -14,7 +10,7 @@ Este projeto demonstra **integração síncrona com API externa** utilizando:
 
 ---
 
-# 🚀 Funcionalidades
+## 🚀 Funcionalidades
 
 - Endpoint principal: `GET /noticias`
 - Retorna as **10 notícias mais recentes do IBGE**
@@ -22,14 +18,14 @@ Este projeto demonstra **integração síncrona com API externa** utilizando:
 
 ### Campos retornados
 
-| Campo | Descrição |
-|------|-----------|
-| id | Identificador da notícia |
-| titulo | Título da notícia |
+| Campo  | Descrição                  |
+|--------|----------------------------|
+| id     | Identificador da notícia   |
+| titulo | Título da notícia          |
 
 ---
 
-# 📦 Exemplo de Resposta
+## 📦 Exemplo de Resposta
 
 ```json
 [
@@ -42,3 +38,110 @@ Este projeto demonstra **integração síncrona com API externa** utilizando:
     "titulo": "IBGE tem financiamento retomado para o SINAPI após novo decreto do Governo Federal"
   }
 ]
+```
+
+---
+
+## 🛠 Tecnologias Utilizadas
+
+- Java 19
+- Spring Boot 3.2
+- Maven
+- RestTemplate (chamadas HTTP síncronas)
+- org.json (parsing JSON)
+- Swagger / OpenAPI
+- Replit Autoscale (deploy)
+
+---
+
+## ▶️ Como Executar o Projeto
+
+### 1️⃣ Clonar o repositório
+
+```bash
+git clone https://github.com/alexjosesilva/api-rest-sincrono-java.git
+cd api-rest-sincrono-java
+```
+
+### 2️⃣ Instalar dependências
+
+```bash
+mvn clean install
+```
+
+### 3️⃣ Executar a aplicação
+
+```bash
+mvn spring-boot:run
+```
+
+### 4️⃣ Acessar o endpoint
+
+```
+http://localhost:5000/noticias
+```
+
+> No Replit, basta clicar em **Run** e o preview abre automaticamente.
+
+---
+
+## 🌐 Deploy
+
+A API está hospedada publicamente no Replit.
+
+**API**
+```
+https://api-rest-sincrono-java--alexjose.replit.app/noticias
+```
+
+**Swagger (documentação interativa)**
+```
+https://api-rest-sincrono-java--alexjose.replit.app/swagger-ui.html
+```
+
+---
+
+## 📌 Endpoints
+
+| Método | Endpoint          | Descrição                              | Status |
+|--------|-------------------|----------------------------------------|--------|
+| GET    | /noticias         | Retorna as 10 últimas notícias do IBGE | ✅     |
+| GET    | /swagger-ui.html  | Interface Swagger para testes          | ✅     |
+| GET    | /v3/api-docs      | Especificação OpenAPI                  | ✅     |
+
+---
+
+## 📊 Fonte de Dados
+
+API oficial do IBGE:
+```
+https://servicodados.ibge.gov.br/api/v3/noticias?qtd=10
+```
+
+---
+
+## 🔧 Melhorias Futuras
+
+- Adicionar mais campos da notícia:
+  - `introducao`
+  - `data_publicacao`
+  - `link`
+  - `imagens`
+- Suporte a parâmetros:
+  - `qtd`
+  - `pagina`
+  - `tipo`
+- Implementar cache de respostas
+- Tratamento de erros com `@ControllerAdvice`
+- Testes unitários e de integração
+- Criar frontend simples (HTML + JS) consumindo a API
+
+---
+
+## 👨‍💻 Autor
+
+**Alex José**
+📍 Pernambuco — Brasil
+
+- GitHub: [https://github.com/alexjosesilva](https://github.com/alexjosesilva)
+- Replit: [https://replit.com/@alexjose](https://replit.com/@alexjose)
