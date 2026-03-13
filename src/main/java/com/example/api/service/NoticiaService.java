@@ -17,9 +17,14 @@ import java.util.List;
 public class NoticiaService {
 
     private static final Logger logger = LoggerFactory.getLogger(NoticiaService.class);
+    private final int quantidadeNoticias = 10;  // ← valor padrão: 10
+    private final String URL = "https://servicodados.ibge.gov.br/api/v3/noticias";  // ← ADICIONEI ?qtd=10 aqui!
 
-    private final String URL = "https://servicodados.ibge.gov.br/api/v3/noticias?qtd=10";  // ← ADICIONEI ?qtd=10 aqui!
-
+    // Método que monta a URL dinamicamente
+    private String getUrl() {
+        return URL + "?qtd=" + quantidadeNoticias;
+    }
+    
     public List<Noticia> buscarNoticias() {
         List<Noticia> noticias = new ArrayList<>();
         RestTemplate restTemplate = new RestTemplate();
