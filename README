@@ -1,0 +1,87 @@
+# API REST Síncrona Java - Notícias IBGE
+
+Uma API simples desenvolvida em **Spring Boot** que consome as notícias recentes da API oficial do IBGE e retorna um JSON com ID e título das notícias.
+
+Projeto criado como exemplo de integração síncrona com API externa usando `RestTemplate` + parsing de JSON.
+
+## Funcionalidades
+
+- Endpoint principal: `GET /noticias`
+- Retorna as **últimas 10 notícias** publicadas pelo IBGE
+- Campos retornados por notícia:
+  - `id` → identificador da notícia
+  - `titulo` → título completo da notícia
+
+Exemplo de resposta (JSON):
+
+```json
+[
+  {
+    "id": "46096",
+    "titulo": "Ministro da Previdência Social visita sede do IBGE no Rio de Janeiro"
+  },
+  {
+    "id": "46095",
+    "titulo": "IBGE tem financiamento retomado para o SINAPI após novo decreto do Governo Federal"
+  }
+  // ... até 10 itens
+]
+
+# Tecnologias Utilizadas
+
+Java 19
+Spring Boot 3.2
+Maven
+RestTemplate (para chamadas HTTP síncronas)
+org.json (para parsing do JSON da API IBGE)
+Hospedado no Replit (Autoscale)
+
+# Como Executar Localmente (no Replit ou em ambiente local)
+
+## 1. Clone o repositório:
+git clone https://github.com/alexjosesilva/api-rest-sincrono-java.git
+cd api-rest-sincrono-java
+
+## 2. Instale as dependências:
+mvn clean install
+
+## 3. Rode a aplicação:
+mvn spring-boot:run
+
+## 4.Acesse o endpoint:
+http://localhost:5000/noticias   (ou a porta configurada)
+
+No Replit: basta clicar em Run → o preview abre automaticamente
+
+# Deploy (Replit)
+O projeto já está hospedado e público:
+
+- URL da API:
+https://api-rest-sincrono-java--alexjose.replit.app/noticias
+- Swagger UI (documentação interativa):
+https://api-rest-sincrono-java--alexjose.replit.app/swagger-ui.html
+
+# Endpoints Disponíveis
+
+Método,Endpoint,Descrição,Status
+GET,/noticias,Retorna as últimas 10 notícias do IBGE,✅
+GET,/swagger-ui.html,Interface Swagger para testar a API,✅
+GET,/v3/api-docs,Especificação OpenAPI em JSON,✅
+
+# Fonte de Dados
+API oficial do IBGE: https://servicodados.ibge.gov.br/api/v3/noticias?qtd=10
+
+# Próximos Passos / Melhorias Possíveis
+- Adicionar mais campos (introdução, data_publicacao, link, imagens)
+- Suporte a parâmetros (qtd, página, tipo de notícia)
+- Cache de respostas (para evitar chamadas frequentes à API IBGE)
+- Tratamento de erros mais elegante com @ControllerAdvice
+- Testes unitários e de integração
+- Frontend simples (HTML + JS) consumindo a API
+
+# Autor
+Alex José
+PE, Brasil
+GitHub: @alexjosesilva
+Replit: @alexjose
+Feito com ☕ e Spring Boot em 2026
