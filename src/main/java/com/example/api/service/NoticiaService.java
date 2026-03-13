@@ -12,28 +12,39 @@ import java.util.List;
 @Service
 public class NoticiaService {
 
-    private final String URL = "https://servicodados.ibge.gov.br/api/v3/noticias";
+    private static final String URL = "https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=10";
 
     public List<Noticia> buscarNoticias() {
-
         RestTemplate restTemplate = new RestTemplate();
-
-        String response = restTemplate.getForObject(URL, String.class);
-
-        JSONObject json = new JSONObject(response);
-
-        JSONArray items = json.getJSONArray("items");
-
         List<Noticia> lista = new ArrayList<>();
 
-        for (int i = 0; i < items.length() && i < 10; i++) {
+        try {
+            String response = restTemplate.getForObject(URL, String.class);
 
-            JSONObject obj = items.getJSONObject(i);
+            if (response == null || response.trim().isEmpty()) {
+                System.out.println("Resposta vazia da API do IBGE");
+                return lista;
+            }
 
-            String id = obj.getString("id");
-            String titulo = obj.getString("titulo");
+            JSONObject json = new JSONObject(response);
+            JSONArray items = json.optJSONArray("items");
 
-            lista.add(new Noticia(id, titulo));
+            if (items != null) {
+                for (int i = 0; i < items.length() && i < 10; i++) {
+                    JSONObject obj = items.getJSONObject(i);
+
+                    String id = obj.optString("id", "sem-id");
+                    String titulo = obj.optString("titulo", "sem título");
+
+                    lista.add(new Noticia(id, titulo));
+                }
+            } else {
+                System.out.println("Campo 'items' não encontrado na resposta");
+            }
+
+        } catch (Exception e) {
+            System.err.println("Erro ao buscar notícias: " + e.getMessage());
+            e.printStackTrace();
         }
 
         return lista;
