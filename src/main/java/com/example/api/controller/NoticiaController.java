@@ -2,7 +2,8 @@ package com.example.api.controller;
 
 import com.example.api.model.Noticia;
 import com.example.api.service.NoticiaService;
-
+import org.json.JSONException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,12 @@ public class NoticiaController {
     }
 
     @GetMapping
-    public List<Noticia> listarNoticias() {
-        return service.buscarNoticias();
+    public ResponseEntity<List<Noticia>> listarNoticias() {
+        try {
+            List<Noticia> noticias = service.buscarNoticias();
+            return ResponseEntity.ok(noticias);
+        } catch (JSONException e) {
+            return ResponseEntity.internalServerError().build();
+        }
     }
 }
